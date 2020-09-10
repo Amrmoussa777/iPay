@@ -31,7 +31,7 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
         cell.categNmae.text = category.categoryname
         cell.budget.text = String(category.expenses)
         let df = DateFormatter()
-        df.dateFormat = "EEE, MMM d"
+        df.dateFormat = "EEE, MMM d \n hh:mm aaa"
         let date = df.string(from: category.date!)
         cell.Date.text = date
       
