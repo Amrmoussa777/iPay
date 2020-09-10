@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CBE4E98DEE58B7A6741B07A /* Pods_ipay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C288F156FA523E3AC87DC6FE /* Pods_ipay.framework */; };
 		1F585F0F2507BBE3008119A3 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F585F0E2507BBE3008119A3 /* AddCategoryViewController.swift */; };
+		1F96F4482508F55D00CC2533 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96F4472508F55D00CC2533 /* CategoryItem.swift */; };
 		1FA58BFC2506B36C0054327A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA58BFB2506B36C0054327A /* AppDelegate.swift */; };
 		1FA58BFE2506B36C0054327A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA58BFD2506B36C0054327A /* SceneDelegate.swift */; };
 		1FA58C002506B36C0054327A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA58BFF2506B36C0054327A /* CategoriesViewController.swift */; };
@@ -15,10 +17,13 @@
 		1FA58C052506B3710054327A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA58C042506B3710054327A /* Assets.xcassets */; };
 		1FA58C082506B3710054327A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA58C062506B3710054327A /* LaunchScreen.storyboard */; };
 		1FA58C102506E6340054327A /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA58C0F2506E6340054327A /* constant.swift */; };
+		1FE809C4250A96500042A8C4 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE809C3250A96500042A8C4 /* Payment.swift */; };
+		1FE809C6250AB6DC0042A8C4 /* payentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F585F0E2507BBE3008119A3 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		1F96F4472508F55D00CC2533 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		1FA58BF82506B36C0054327A /* ipay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ipay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA58BFB2506B36C0054327A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FA58BFD2506B36C0054327A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,11 @@
 		1FA58C072506B3710054327A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FA58C092506B3710054327A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FA58C0F2506E6340054327A /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
+		1FE809C3250A96500042A8C4 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payentViewController.swift; sourceTree = "<group>"; };
+		2271CF37076910F9FB23AB34 /* Pods-ipay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipay.debug.xcconfig"; path = "Target Support Files/Pods-ipay/Pods-ipay.debug.xcconfig"; sourceTree = "<group>"; };
+		A85D1E7935927EED380AD7A3 /* Pods-ipay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipay.release.xcconfig"; path = "Target Support Files/Pods-ipay/Pods-ipay.release.xcconfig"; sourceTree = "<group>"; };
+		C288F156FA523E3AC87DC6FE /* Pods_ipay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,12 +45,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CBE4E98DEE58B7A6741B07A /* Pods_ipay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12B63449AEF32FAE4F283659 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C288F156FA523E3AC87DC6FE /* Pods_ipay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1F585F0B2507BB52008119A3 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,8 +72,10 @@
 		1F585F0C2507BB5F008119A3 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1F96F4472508F55D00CC2533 /* CategoryItem.swift */,
 				1FA58C0F2506E6340054327A /* constant.swift */,
 				1FA58C042506B3710054327A /* Assets.xcassets */,
+				1FE809C3250A96500042A8C4 /* Payment.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -64,6 +85,7 @@
 			children = (
 				1FA58BFF2506B36C0054327A /* CategoriesViewController.swift */,
 				1F585F0E2507BBE3008119A3 /* AddCategoryViewController.swift */,
+				1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -73,6 +95,8 @@
 			children = (
 				1FA58BFA2506B36C0054327A /* ipay */,
 				1FA58BF92506B36C0054327A /* Products */,
+				55DC895AD62195815C075EEF /* Pods */,
+				12B63449AEF32FAE4F283659 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +121,15 @@
 			path = ipay;
 			sourceTree = "<group>";
 		};
+		55DC895AD62195815C075EEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2271CF37076910F9FB23AB34 /* Pods-ipay.debug.xcconfig */,
+				A85D1E7935927EED380AD7A3 /* Pods-ipay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FA58C0C2506B3720054327A /* Build configuration list for PBXNativeTarget "ipay" */;
 			buildPhases = (
+				E43EFDBB2BCB01A533496DF4 /* [CP] Check Pods Manifest.lock */,
 				1FA58BF42506B36C0054327A /* Sources */,
 				1FA58BF52506B36C0054327A /* Frameworks */,
 				1FA58BF62506B36C0054327A /* Resources */,
+				5844B0551C386FB04F0CA35C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,15 +198,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5844B0551C386FB04F0CA35C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ipay/Pods-ipay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ipay/Pods-ipay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ipay/Pods-ipay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E43EFDBB2BCB01A533496DF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ipay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1FA58BF42506B36C0054327A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1FA58C002506B36C0054327A /* CategoriesViewController.swift in Sources */,
+				1FE809C4250A96500042A8C4 /* Payment.swift in Sources */,
 				1F585F0F2507BBE3008119A3 /* AddCategoryViewController.swift in Sources */,
 				1FA58BFC2506B36C0054327A /* AppDelegate.swift in Sources */,
 				1FA58BFE2506B36C0054327A /* SceneDelegate.swift in Sources */,
+				1FE809C6250AB6DC0042A8C4 /* payentViewController.swift in Sources */,
+				1F96F4482508F55D00CC2533 /* CategoryItem.swift in Sources */,
 				1FA58C102506E6340054327A /* constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +394,7 @@
 		};
 		1FA58C0D2506B3720054327A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2271CF37076910F9FB23AB34 /* Pods-ipay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -332,6 +413,7 @@
 		};
 		1FA58C0E2506B3720054327A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A85D1E7935927EED380AD7A3 /* Pods-ipay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

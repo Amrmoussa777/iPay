@@ -7,19 +7,36 @@
 //
 
 import UIKit
-
-class CategoriesViewController : UIViewController , UITableViewDataSource, UITableViewDelegate {
+import RealmSwift
+class CategoriesViewController : UIViewController , UITableViewDataSource, UITableViewDelegate ,newCategoryAddeddprotocol {
+    
+    
+  func newCategoryadedupdate() {
+       loadDataFrmDB()
+  }
+    
     @IBOutlet weak var categeoryTableView: UITableView!
+      let realm = try! Realm()
+    var categorrieArray :Results<CategoryItem>?
     
-    let expensesArray = [500,600,190]
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return  expensesArray.count
+      return  categorrieArray?.count ?? 0 
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: constant.tableViewCellIdentifier)
-        cell.textLabel?.text = String(expensesArray[indexPath.row])
-        return cell
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: constant.tableViewCellIdentifier, for: indexPath) as! categorycell
+        if let category = categorrieArray?[indexPath.row]{
+        cell.categNmae.text = category.categoryname
+        cell.budget.text = String(category.expenses)
+        let df = DateFormatter()
+        df.dateFormat = "MMM d  yyyy"
+        let date = df.string(from: category.date!)
+        cell.Date.text = date
+      
+        }
+          return cell
     }
     
 
@@ -27,10 +44,41 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
         super.viewDidLoad()
         categeoryTableView.delegate = self
         categeoryTableView.dataSource = self
+        loadDataFrmDB()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+       
         
         // Do any additional setup after loading the view.
     }
 
-
+    
+    func loadDataFrmDB() {
+        categorrieArray =  realm.objects(CategoryItem.self)
+        categeoryTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == constant.addCategorySegue){
+            let displayVC = segue.destination as! AddCategoryViewController
+            displayVC.delegate = self
+        }
+        if(segue.identifier == constant.selectCatergory){
+            let displayVC = segue.destination as! payentViewController
+            print(constant.selectCatergory)
+            if let index = categeoryTableView.indexPathForSelectedRow{
+                displayVC.parentCategory = categorrieArray?[index.row]
+            }
+            
+        }
+    }
+    
+   
+  
 }
-
+class categorycell : UITableViewCell {
+    @IBOutlet weak var categNmae: UILabel!
+    
+    @IBOutlet weak var Date: UILabel!
+    
+    @IBOutlet weak var budget: UILabel!
+}

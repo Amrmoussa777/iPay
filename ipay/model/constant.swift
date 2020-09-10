@@ -9,7 +9,9 @@
 import Foundation
  public struct constant {
     static let tableViewCellIdentifier = "tableViewCellIdentifier"
+    static let paymentTableviewcellidentifire = "paymentCellIdentifier"
     static let addCategorySegue = "addCategorySegue"
-    
+    static let newCategoryAdded = "newcategortAdded"
+    static let selectCatergory = "selectCategory"
     
 }
