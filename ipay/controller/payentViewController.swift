@@ -38,7 +38,7 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
             cell.paymentName.text = payment.payment
             cell.amountPaid.text = String(payment.amount)
             let df = DateFormatter()
-            df.dateFormat = "MMM d  yyyy"
+            df.dateFormat = "EEE, MMM d"
             let date = df.string(from: payment.date!)
             cell.dateOfPayment.text = date
         }

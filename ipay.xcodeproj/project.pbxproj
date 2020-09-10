@@ -19,6 +19,7 @@
 		1FA58C102506E6340054327A /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA58C0F2506E6340054327A /* constant.swift */; };
 		1FE809C4250A96500042A8C4 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE809C3250A96500042A8C4 /* Payment.swift */; };
 		1FE809C6250AB6DC0042A8C4 /* payentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */; };
+		1FE809C8250AD6FA0042A8C4 /* AddPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE809C7250AD6FA0042A8C4 /* AddPaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		1FA58C0F2506E6340054327A /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		1FE809C3250A96500042A8C4 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payentViewController.swift; sourceTree = "<group>"; };
+		1FE809C7250AD6FA0042A8C4 /* AddPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentViewController.swift; sourceTree = "<group>"; };
 		2271CF37076910F9FB23AB34 /* Pods-ipay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipay.debug.xcconfig"; path = "Target Support Files/Pods-ipay/Pods-ipay.debug.xcconfig"; sourceTree = "<group>"; };
 		A85D1E7935927EED380AD7A3 /* Pods-ipay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipay.release.xcconfig"; path = "Target Support Files/Pods-ipay/Pods-ipay.release.xcconfig"; sourceTree = "<group>"; };
 		C288F156FA523E3AC87DC6FE /* Pods_ipay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				1FA58BFF2506B36C0054327A /* CategoriesViewController.swift */,
 				1F585F0E2507BBE3008119A3 /* AddCategoryViewController.swift */,
 				1FE809C5250AB6DC0042A8C4 /* payentViewController.swift */,
+				1FE809C7250AD6FA0042A8C4 /* AddPaymentViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				1FE809C6250AB6DC0042A8C4 /* payentViewController.swift in Sources */,
 				1F96F4482508F55D00CC2533 /* CategoryItem.swift in Sources */,
 				1FA58C102506E6340054327A /* constant.swift in Sources */,
+				1FE809C8250AD6FA0042A8C4 /* AddPaymentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
