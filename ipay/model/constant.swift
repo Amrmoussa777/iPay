@@ -13,5 +13,6 @@ import Foundation
     static let addCategorySegue = "addCategorySegue"
     static let newCategoryAdded = "newcategortAdded"
     static let selectCatergory = "selectCategory"
+    static let addNewPaymentSegue = "addNewpayment"
     
 }

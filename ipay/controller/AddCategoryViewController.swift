@@ -45,9 +45,7 @@ class AddCategoryViewController: UIViewController {
                 if let delegate = self.delegate{
                     delegate.newCategoryadedupdate()
                 }
-                self.dismiss(animated: true) {
-                    
-                }
+                self.dismiss(animated: true)
             }
           }catch{
               print("error while establishing db \(error)")

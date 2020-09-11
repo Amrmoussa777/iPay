@@ -10,7 +10,9 @@ import UIKit
 import RealmSwift
 class CategoriesViewController : UIViewController , UITableViewDataSource, UITableViewDelegate ,newCategoryAddeddprotocol {
     
-    
+    @IBOutlet weak var bottomBugetLabel: UILabel!
+    var expenses:Double?
+    var budget:Double?
   func newCategoryadedupdate() {
        loadDataFrmDB()
   }
@@ -54,14 +56,21 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
     
     func loadDataFrmDB() {
         categorrieArray =  realm.objects(CategoryItem.self)
+        budget = realm.objects(CategoryItem.self).sum(ofProperty:"expenses")
+        expenses = realm.objects(Payment.self).sum(ofProperty:"amount")
         categeoryTableView.reloadData()
+        bottomBugetLabel.text = "\(expenses!)/\(budget!)"
+        if expenses! / budget! > 0.80 {
+            bottomBugetLabel.backgroundColor =
+            .systemRed
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == constant.addCategorySegue){
-            let displayVC = segue.destination as! AddCategoryViewController
-            displayVC.delegate = self
-        }
+            if(segue.identifier == constant.addCategorySegue){
+                let displayVC = segue.destination as! AddCategoryViewController
+                displayVC.delegate = self
+            }
         if(segue.identifier == constant.selectCatergory){
             let displayVC = segue.destination as! payentViewController
             print(constant.selectCatergory)

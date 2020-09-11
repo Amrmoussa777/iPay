@@ -112,6 +112,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomBugetLabel" destination="I8h-qI-iTt" id="S7p-1c-See"/>
                         <outlet property="categeoryTableView" destination="fNV-pq-WZ2" id="u9w-31-YNy"/>
                     </connections>
                 </viewController>
@@ -215,24 +216,24 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YOg-gP-yRY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="OSt-LY-tfU" kind="presentation" id="7K4-6C-2dZ"/>
+                                <segue destination="OSt-LY-tfU" kind="presentation" identifier="addNewpayment" id="7K4-6C-2dZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomPaidLabel" destination="Wja-5j-BOl" id="5U7-UB-imh"/>
+                        <outlet property="bottomPaidLabel" destination="Wja-5j-BOl" id="9PD-Nn-OjK"/>
                         <outlet property="paymentsTableView" destination="46H-ek-P4m" id="Mfh-Q1-E6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0DA-ws-U92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2350.7246376811595" y="-41.517857142857139"/>
+            <point key="canvasLocation" x="2288" y="-36"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Payment View Controller-->
         <scene sceneID="HfL-RG-Os6">
             <objects>
-                <viewController id="OSt-LY-tfU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3I0-GW-qlt">
+                <viewController id="OSt-LY-tfU" customClass="AddPaymentViewController" customModule="ipay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3I0-GW-qlt" customClass="paymentCell" customModule="ipay" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -285,6 +286,9 @@
                                                         <state key="normal" title="Save">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="savebuttonpressed:" destination="OSt-LY-tfU" eventType="touchUpInside" id="CSR-02-zBN"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.23921568630000001" green="0.56078431370000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -317,6 +321,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vO6-oh-2as"/>
                     </view>
+                    <connections>
+                        <outlet property="amountTxtFeild" destination="DXt-TK-2mi" id="jgx-WK-bRz"/>
+                        <outlet property="paymentName" destination="VAS-7s-COI" id="G84-pU-kaX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zc1-RH-Cye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

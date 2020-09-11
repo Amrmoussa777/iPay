@@ -8,8 +8,12 @@
 
 import UIKit
 import RealmSwift
-class payentViewController: UIViewController , UITableViewDelegate,UITableViewDataSource {
-   
+class payentViewController: UIViewController , UITableViewDelegate,UITableViewDataSource,newpaymentadded {
+    let realm = try! Realm()
+    var categoryPayments:Double?
+    var categoryBudget:Double?
+    
+    
     var parentCategory:CategoryItem?
     var paymentsArr : Results<Payment>?
     @IBOutlet weak var paymentsTableView: UITableView!
@@ -18,10 +22,10 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         paymentsTableView.delegate = self
         paymentsTableView.dataSource = self
-        loadpaymentsfrmDB()
-        if let parent = parentCategory{
-            print("<>>\(parent)<<><<")
-        }
+        loadData()
+        //        if let parent = parentCategory{
+        ////            print("<>>\(parent)<<><<")
+        //        }
         // Do any additional setup after loading the view.
     }
     
@@ -45,15 +49,28 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
         return cell
     }
     
-
-    func loadpaymentsfrmDB(){
+    
+    func loadData(){
         paymentsArr = parentCategory?.payments.sorted(byKeyPath: "date", ascending: false)
+        categoryPayments = parentCategory?.payments.sum(ofProperty: "amount")
+        categoryBudget = parentCategory?.expenses
+        bottomPaidLabel.text =  "Paid : \(categoryPayments!)/\(categoryBudget!)"
+        if categoryPayments! / categoryBudget! > 0.80 {
+            bottomPaidLabel.backgroundColor =
+            .systemRed
+        }
         paymentsTableView.reloadData()
-           
-       }
-
-   
-
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == constant.addNewPaymentSegue){
+            let destVC = segue.destination as! AddPaymentViewController
+            destVC.category = parentCategory
+            destVC.delegate = self
+        }
+    }
+    
 }
 
 class  paymentCell : UITableViewCell {

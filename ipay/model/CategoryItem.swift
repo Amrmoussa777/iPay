@@ -11,7 +11,7 @@ import RealmSwift
 class CategoryItem:Object{
     @objc  dynamic var  categoryname :String = ""
     @objc dynamic var expenses:Double = 0.0
-    @objc dynamic var expensesAvailable:Double = 0.0
+//    @objc dynamic var expensesAvailable:Double = 0.0
     @objc dynamic var  date:Date? = Date()
     let payments = List<Payment>()
     
