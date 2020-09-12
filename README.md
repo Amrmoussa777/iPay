@@ -13,4 +13,4 @@
 
 
 
- <img src="ipay/ipay record.gif" width="1000" height="800"> 
+ <img src="ipay/ipay_record.gif" width="1000" height="800"> 
