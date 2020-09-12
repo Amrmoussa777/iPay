@@ -23,10 +23,6 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
         paymentsTableView.delegate = self
         paymentsTableView.dataSource = self
         loadData()
-        //        if let parent = parentCategory{
-        ////            print("<>>\(parent)<<><<")
-        //        }
-        // Do any additional setup after loading the view.
     }
     
     
@@ -40,10 +36,11 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: constant.paymentTableviewcellidentifire, for: indexPath) as! paymentCell
         if let payment = paymentsArr?[indexPath.row]{
             cell.paymentName.text = payment.payment
-            cell.amountPaid.text = String(payment.amount)
+            cell.amountPaid.text = String(payment.amount) + "$"
             let df = DateFormatter()
-            df.dateFormat = "EEE, MMM d \n hh:mm aaa"
+            df.dateFormat = "EEE, MMM d  hh:mm aaa"
             let date = df.string(from: payment.date!)
+            cell.loaded = true
             cell.dateOfPayment.text = date
         }
         return cell
@@ -54,10 +51,10 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
         paymentsArr = parentCategory?.payments.sorted(byKeyPath: "date", ascending: false)
         categoryPayments = parentCategory?.payments.sum(ofProperty: "amount")
         categoryBudget = parentCategory?.expenses
-        bottomPaidLabel.text =  "Paid : \(categoryPayments!)/\(categoryBudget!)"
+        bottomPaidLabel.text =  "Paid : \(categoryPayments!)/\(categoryBudget!)" + "$"
         if categoryPayments! / categoryBudget! > 0.80 {
             bottomPaidLabel.backgroundColor =
-            .systemRed
+                .systemRed
         }
         paymentsTableView.reloadData()
         
@@ -74,8 +71,33 @@ class payentViewController: UIViewController , UITableViewDelegate,UITableViewDa
 }
 
 class  paymentCell : UITableViewCell {
-    
+    var loaded:Bool?{
+        didSet{
+            loadKnots()
+        }
+    }
+    @IBOutlet weak var knotsShapeVoew: UIView!
     @IBOutlet weak var paymentName: UILabel!
     @IBOutlet weak var dateOfPayment: UILabel!
     @IBOutlet weak var amountPaid: UILabel!
+    
+    let shapelayer = CAShapeLayer()
+    let linePath = UIBezierPath()
+    func loadKnots(){
+        linePath.move(to: CGPoint(x: knotsShapeVoew.frame.width / 2, y: 0 ))
+        linePath.addLine(to: CGPoint(x: knotsShapeVoew.frame.width / 2, y: knotsShapeVoew.frame.height))
+        shapelayer.path = linePath.cgPath
+        shapelayer.strokeColor = #colorLiteral(red: 0.9411764706, green: 0.5411764706, blue: 0.3647058824, alpha: 1)
+        shapelayer.lineWidth = 5
+        knotsShapeVoew.layer.sublayers?.removeAll()
+        knotsShapeVoew.layer.addSublayer(shapelayer)
+        //      MARK: - Design centeral circle
+        let circleShape = CAShapeLayer()
+        let circlepath = UIBezierPath(arcCenter: knotsShapeVoew.center, radius: 10, startAngle: -CGFloat.pi / 2, endAngle: CGFloat.pi * 2 , clockwise: true)
+        circleShape.path = circlepath.cgPath
+        circleShape.fillColor = #colorLiteral(red: 0.9411764706, green: 0.5411764706, blue: 0.3647058824, alpha: 1)
+        circleShape.lineCap = CAShapeLayerLineCap.round
+        knotsShapeVoew.layer.addSublayer(circleShape)
+        
+    }
 }

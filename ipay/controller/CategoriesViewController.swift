@@ -16,7 +16,9 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
   func newCategoryadedupdate() {
        loadDataFrmDB()
   }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        loadDataFrmDB()
+    }
     @IBOutlet weak var categeoryTableView: UITableView!
       let realm = try! Realm()
     var categorrieArray :Results<CategoryItem>?
@@ -27,28 +29,34 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: constant.tableViewCellIdentifier, for: indexPath) as! categorycell
         if let category = categorrieArray?[indexPath.row]{
-        cell.categNmae.text = category.categoryname
-        cell.budget.text = String(category.expenses)
-        let df = DateFormatter()
-        df.dateFormat = "EEE, MMM d \n hh:mm aaa"
-        let date = df.string(from: category.date!)
-        cell.Date.text = date
-      
+            cell.percentage = category.payments.sum(ofProperty: "amount") / category.expenses
+            cell.categNmae.text = category.categoryname
+            cell.budget.text = String(category.expenses) + "$"
+//            cell.percentage = category.payments.sum(ofProperty: "amount") / category.expenses
+         
+            let df = DateFormatter()
+            df.dateFormat = "EEE, MMM d  hh:mm aaa"
+            let date = df.string(from: category.date!)
+            cell.Date.text = date
+            cell.contentView.layer.cornerRadius = 10
+            cell.clipsToBounds = true
         }
-          return cell
+        return cell
     }
-    
-
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        loadDataFrmDB()
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         categeoryTableView.delegate = self
         categeoryTableView.dataSource = self
         loadDataFrmDB()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-       
         
         // Do any additional setup after loading the view.
     }
@@ -85,9 +93,100 @@ class CategoriesViewController : UIViewController , UITableViewDataSource, UITab
   
 }
 class categorycell : UITableViewCell {
+    var percentage:Double?{
+        didSet{
+           loadprogress(percentage!)
+        }
+    }
+
+    @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var categNmae: UILabel!
-    
     @IBOutlet weak var Date: UILabel!
-    
     @IBOutlet weak var budget: UILabel!
-}
+    @IBOutlet weak var circularView: UIView!
+    
+    let shapelayer = CAShapeLayer()
+    
+    func loadprogress(_ percentage:Double){
+        
+      
+        
+        percentageLabel.text = String("\(Int(percentage * 100))%" )
+        percentageLabel.textAlignment = .center
+         let center = circularView.center
+                    // create my track layer
+                        let trackLayer = CAShapeLayer()
+                        print(percentage)
+//        let angel = M_PI * 2 * GFloat.init(percentage) - M_PI_2C
+//        print("Angel :     \(angel)")
+        let circularPath = UIBezierPath(arcCenter: center , radius: CGFloat(30), startAngle: CGFloat(-M_PI_2), endAngle:CGFloat(M_PI * 2 * percentage - M_PI_2), clockwise: true)
+        let trackPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: -CGFloat.pi / 2, endAngle:   2 * CGFloat.pi, clockwise: true)
+                        trackLayer.path = trackPath.cgPath
+                        
+                        trackLayer.strokeColor = #colorLiteral(red: 0.9411764706, green: 0.5411764706, blue: 0.3647058824, alpha: 0.1156624572)
+                        trackLayer.lineWidth = 5
+                        trackLayer.fillColor = UIColor.clear.cgColor
+                trackLayer.lineCap = CAShapeLayerLineCap.round
+                        circularView.layer.addSublayer(trackLayer)
+                        
+                    
+                        shapelayer.path = circularPath.cgPath
+            
+                shapelayer.strokeColor = #colorLiteral(red: 0.9411764706, green: 0.5411764706, blue: 0.3647058824, alpha: 1)
+                        shapelayer.lineWidth = 5
+                        shapelayer.fillColor = UIColor.clear.cgColor
+                shapelayer.lineCap = CAShapeLayerLineCap.round
+                        
+                        shapelayer.strokeEnd = 0
+                        
+                        circularView.layer.addSublayer(shapelayer)
+                
+        //       nanimate
+                let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+                
+                basicAnimation.toValue = 1
+                
+                basicAnimation.duration = 2
+                
+                basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+                basicAnimation.isRemovedOnCompletion = false
+                
+                shapelayer.add(basicAnimation, forKey: "urSoBasic")
+                
+                }
+    }
+    
+        
+        
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//extension UIImageView {
+//  public func maskCircle(anyImage: UIImage) {
+//    self.contentMode = UIView.ContentMode.scaleAspectFit
+//    self.layer.cornerRadius = self.frame.height / 2
+//    self.layer.masksToBounds = false
+//    self.clipsToBounds = true
+//
+//   // make square(* must to make circle),
+//   // resize(reduce the kilobyte) and
+//   // fix rotation.
+//   self.image = anyImage
+//  }
+//}

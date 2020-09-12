@@ -32,8 +32,8 @@ class AddCategoryViewController: UIViewController {
     @IBAction func addBtnClicked(_ sender: UIButton) {
           
           let category = CategoryItem()
-          category.categoryname = categoryTxtFeild.text!
-          category.expenses = Double(expensesTxtFeild.text!)!
+        category.categoryname = categoryTxtFeild.text!.capitalizingFirstLetter()
+        category.expenses = Double(expensesTxtFeild.text!)!
           print(datePicker.date)
           category.date =  datePicker.date
           do{
@@ -70,4 +70,13 @@ class AddCategoryViewController: UIViewController {
 }
 protocol newCategoryAddeddprotocol:NSObjectProtocol{
     func newCategoryadedupdate()
+}
+extension String {
+    func capitalizingFirstLetter() -> String {
+      return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+      self = self.capitalizingFirstLetter()
+    }
 }

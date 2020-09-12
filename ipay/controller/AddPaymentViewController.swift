@@ -35,7 +35,7 @@ class AddPaymentViewController: UIViewController{
             do {
                 try self.realm.write {
                     let newpayment = Payment()
-                    newpayment.payment = paymentName.text!
+                    newpayment.payment = paymentName.text!.capitalizingFirstLetter()
                     newpayment.date = Date()
                     newpayment.amount = Double(amountTxtFeild.text!)!
                     currentCategory.payments.append(newpayment)
